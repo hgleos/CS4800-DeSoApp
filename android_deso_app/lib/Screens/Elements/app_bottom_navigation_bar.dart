@@ -59,6 +59,9 @@ class _AppBottomNavBarState extends State<AppBottomNavBar> {
 
       // this is the bottom navigation bar for the app
     bottomNavigationBar: BottomNavigationBar(
+        // font size is 0 because there are no labels
+        selectedLabelStyle: TextStyle(fontSize: 0),
+        unselectedLabelStyle: TextStyle(fontSize: 0),
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
