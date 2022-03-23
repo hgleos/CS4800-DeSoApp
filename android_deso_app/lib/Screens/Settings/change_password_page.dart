@@ -17,7 +17,15 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
       appBar: desoAppBar(context, true),
       body: Center(
         child: Column(
-
+          children: [
+            Container(
+              margin: EdgeInsets.only(top: 40),
+              child: Text(
+                'Change password',
+                style: boldHeading,
+              ),
+            ),
+          ],
         ),
       ),
       bottomNavigationBar: AppBottomNavBar2(),

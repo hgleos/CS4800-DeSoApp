@@ -17,7 +17,16 @@ class _UpdateEmailPageState extends State<UpdateEmailPage> {
       appBar: desoAppBar(context, true),
       body: Center(
         child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.only(top: 40),
+              child: Text(
+                'Change email address',
+                style: boldHeading,
+              ),
+            ),
 
+          ],
         ),
       ),
       bottomNavigationBar: AppBottomNavBar2(),

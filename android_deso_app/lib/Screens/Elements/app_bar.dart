@@ -30,7 +30,7 @@ desoAppBar(BuildContext context, bool loggedIn) {
             onPressed: () {},
             child: Image(
               fit: BoxFit.contain,
-              image: AssetImage('lib/assets/default profile image.jpg'),
+              image: AssetImage('lib/assets/default profile image.png'),
             ))
       ],
     );
