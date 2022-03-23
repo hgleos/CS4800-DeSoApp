@@ -8,6 +8,8 @@ class AppBottomNavBar2 extends StatefulWidget {
   State<AppBottomNavBar2> createState() => _AppBottomNavBar2State();
 }
 
+final iconSize = 30.0;
+
 class _AppBottomNavBar2State extends State<AppBottomNavBar2> {
   int _selectedIndex = 0; // used for bottom nav bar selection
 
@@ -20,25 +22,27 @@ class _AppBottomNavBar2State extends State<AppBottomNavBar2> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      backgroundColor: Colors.white,
       type: BottomNavigationBarType.fixed,
       // font size is 0 because there are no labels
       selectedLabelStyle: TextStyle(fontSize: 0),
       unselectedLabelStyle: TextStyle(fontSize: 0),
+
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-            icon: Icon(Icons.settings_outlined),
+            icon: Icon(Icons.settings_outlined, size: iconSize),
             label: ''
         ),
         BottomNavigationBarItem(
-            icon: Icon(Icons.handshake_outlined),
+            icon: Icon(Icons.handshake_outlined, size: iconSize),
             label: ''
         ),
         BottomNavigationBarItem(
-            icon: Icon(Icons.list),
+            icon: Icon(Icons.list, size: iconSize),
             label: ''
         ),
         BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart_outlined),
+            icon: Icon(Icons.shopping_cart_outlined, size: iconSize),
             label: ''
         )
       ],
