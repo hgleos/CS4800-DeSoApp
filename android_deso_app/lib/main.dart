@@ -1,3 +1,4 @@
+import 'package:android_deso_app/Screens/HomePage/home_page2.dart';
 import 'package:android_deso_app/Screens/Settings/settings_page.dart';
 import 'package:android_deso_app/Screens/Settings/update_wallet_page.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class DeSoApp extends StatelessWidget {
       title: 'DeSo App',
       theme: ThemeData(
       ),
-      home: const UpdateWalletPage(),
+      home: const HomePage2(),
 
     );
   }

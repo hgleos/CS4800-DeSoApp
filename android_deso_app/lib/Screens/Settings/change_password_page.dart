@@ -25,6 +25,24 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                 style: boldHeading,
               ),
             ),
+            Container(
+              margin: EdgeInsets.only(top: 15, left: 20, right: 20),
+              child: TextField(
+                textInputAction: TextInputAction.next,
+                maxLines: 1,
+                // text style for user input
+                style: TextStyle(fontSize: 20),
+                obscureText: true,
+                autocorrect: false,
+                enableSuggestions: false,
+                decoration: InputDecoration(
+                    fillColor: Colors.white,
+                    filled: true,
+                    border: OutlineInputBorder(),
+                    hintStyle: TextStyle(fontSize: 20, color: Colors.grey),
+                    hintText: 'current password'),
+              ),
+            ),
           ],
         ),
       ),

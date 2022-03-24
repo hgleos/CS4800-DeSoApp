@@ -28,9 +28,9 @@ class _UpdateWalletPageState extends State<UpdateWalletPage> {
               ),
               Container(
                 margin: EdgeInsets.only(top: 25, left: 20, right: 20),
-                // standard height for text field box
                 child: TextField(
-                  textInputAction: TextInputAction.next, // goes to next text field
+                  textInputAction: TextInputAction.next,
+                  // goes to next text field
                   maxLines: 3,
                   // text style for user input
                   style: TextStyle(fontSize: 20),
@@ -48,7 +48,6 @@ class _UpdateWalletPageState extends State<UpdateWalletPage> {
               ),
               Container(
                 margin: EdgeInsets.only(top: 15, left: 20, right: 20),
-                // standard height for text field box
                 child: TextField(
                   maxLines: 1,
                   // text style for user input
@@ -95,9 +94,10 @@ class _UpdateWalletPageState extends State<UpdateWalletPage> {
                 padding: EdgeInsets.all(5.0),
                 margin:
                     EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
-                child: Text(
-                    'BC1YLiFNARSWF6qtXM5acrS7q8VWPeeS2gycVBtqLALkE4c1V3kx4US',
-                    style: smallBold),
+                child: SelectableText(
+                  'BC1YLiFNARSWF6qtXM5acrS7q8VWPeeS2gycVBtqLALkE4c1V3kx4US',
+                  style: smallBold,
+                ),
               ),
             ],
           ),

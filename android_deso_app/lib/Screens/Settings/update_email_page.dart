@@ -25,7 +25,52 @@ class _UpdateEmailPageState extends State<UpdateEmailPage> {
                 style: boldHeading,
               ),
             ),
-
+            Container(
+              margin: EdgeInsets.only(top: 25, left: 20, right: 20),
+              child: TextField(
+                textInputAction: TextInputAction.next,
+                // goes to next text field
+                maxLines: 1,
+                // text style for user input
+                style: TextStyle(fontSize: 20),
+                obscureText: false,
+                autocorrect: false,
+                autofocus: true,
+                enableSuggestions: false,
+                decoration: InputDecoration(
+                    fillColor: Colors.white,
+                    filled: true,
+                    border: OutlineInputBorder(),
+                    hintStyle: TextStyle(fontSize: 20, color: Colors.grey),
+                    hintText: 'new email address'),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 15, left: 20, right: 20),
+              child: TextField(
+                maxLines: 1,
+                // text style for user input
+                style: TextStyle(fontSize: 20),
+                obscureText: true,
+                autocorrect: false,
+                enableSuggestions: false,
+                decoration: InputDecoration(
+                    fillColor: Colors.white,
+                    filled: true,
+                    border: OutlineInputBorder(),
+                    hintStyle: TextStyle(fontSize: 20, color: Colors.grey),
+                    hintText: 'password'),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 25),
+              child: ElevatedButton(
+                  onPressed: () {},
+                  style: elevatedButtonStyle,
+                  child: Text(
+                    'Update',
+                  )),
+            ),
           ],
         ),
       ),
