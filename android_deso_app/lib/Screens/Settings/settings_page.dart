@@ -21,6 +21,15 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  int selectedPage = 0;
+
+  final _pageOptions = [
+    SettingsPage(),
+    Center(child: Text('Contracts', style: boldHeading)),
+    Center(child: Text('Listings', style: boldHeading)),
+    Center(child: Text('Cart', style: boldHeading))
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
