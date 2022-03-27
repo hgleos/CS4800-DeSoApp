@@ -1,17 +1,18 @@
-import 'package:android_deso_app/Screens/Elements/app_bar.dart';
-import 'package:android_deso_app/Screens/Elements/app_bottom_navigation_bar2.dart';
 import 'package:android_deso_app/Screens/Settings/change_password_page.dart';
 import 'package:android_deso_app/Screens/Settings/update_email_page.dart';
 import 'package:android_deso_app/Screens/Settings/update_wallet_page.dart';
 import 'package:flutter/material.dart';
 import 'package:android_deso_app/constants.dart';
 
-import '../Elements/app_bottom_navigation_bar.dart';
+// TODO want to figure out how on unfocus and if password visible make it not visible again
 
-// https://stackoverflow.com/questions/58619673/materialpageroute-goes-to-a-new-page-without-the-appbar-using-it-with-bottomnavi
-// want to transition to other pages in the settings page without it looking like it goes to an entirely new page
-// because it looks strange having bottomnavbar and appbar appear again
-// i think the way to do it is to have it like homepage2 where there's a list of pages
+// TODO figure out inner page routing
+// https://docs.flutter.dev/cookbook/effects/nested-nav
+// https://www.youtube.com/watch?v=FS_LolHfLDc&ab_channel=CodeReviewIo
+// https://stackoverflow.com/questions/49681415/flutter-persistent-navigation-bar-with-named-routes
+
+// focus node? -> for hiding password automatically after clicking out of it
+// https://stackoverflow.com/questions/58097067/clickable-icon-on-textformfield-disable-textformfield-focus-on-icon-click-flu
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -25,9 +26,9 @@ class _SettingsPageState extends State<SettingsPage> {
 
   final _pageOptions = [
     SettingsPage(),
-    Center(child: Text('Contracts', style: boldHeading)),
-    Center(child: Text('Listings', style: boldHeading)),
-    Center(child: Text('Cart', style: boldHeading))
+    ChangePasswordPage(),
+    UpdateEmailPage(),
+    UpdateWalletPage()
   ];
 
   @override

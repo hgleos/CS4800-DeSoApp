@@ -17,3 +17,9 @@ final TextStyle regularTextStyle = TextStyle(fontSize: 16);
 
 // text style for deso wallet addresses
 final TextStyle smallBold = TextStyle(fontSize: 16, fontWeight: FontWeight.bold);
+
+// text style for nft items
+final TextStyle nftTitleStyle = TextStyle(fontSize: 18, fontWeight:  FontWeight.bold);
+final TextStyle nftUserStyle = TextStyle(fontSize: 18);
+final TextStyle nftPriceStyle = TextStyle(fontSize: 18, color: Colors.blue);
+final TextStyle nftDescriptionStyle = TextStyle(fontSize: 16);
