@@ -1,7 +1,7 @@
 import 'package:android_deso_app/Screens/Components/listing.dart';
 import 'package:android_deso_app/Screens/Components/nft_listing.dart';
 import 'package:android_deso_app/Screens/Contracts/contract_history.dart';
-import 'package:android_deso_app/Screens/Contracts/single_listing_page.dart';
+import 'package:android_deso_app/Screens/Contracts/single_contract_listing_page.dart';
 import 'package:flutter/material.dart';
 
 class ContractsPage extends StatefulWidget {
@@ -23,10 +23,6 @@ class _ContractsPageState extends State<ContractsPage> {
   void initState() {
     temp = Listing(title, seller, price, images: listingImages);
     super.initState();
-  }
-
-  Listing getListing(){
-    return temp;
   }
 
   @override
