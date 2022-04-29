@@ -1,5 +1,6 @@
 import 'package:android_deso_app/Screens/Components/image_carousel.dart';
 import 'package:android_deso_app/Screens/Components/listing.dart';
+import 'package:android_deso_app/Screens/Contracts/contract_progress.dart';
 import 'package:android_deso_app/Screens/Elements/app_bar.dart';
 import 'package:android_deso_app/Screens/Elements/app_bottom_navigation_bar2.dart';
 import 'package:flutter/material.dart';
@@ -21,10 +22,16 @@ class SingleContractListingPage extends StatefulWidget {
 
 class _SingleContractListingPageState extends State<SingleContractListingPage> {
   double marginDistance = 10;
+  late bool inContractHistory;
+  
+  @override
+  void initState() {
+    (widget.temp.title.startsWith('PIKA')) ? inContractHistory = true : inContractHistory = false;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: desoAppBar(context, true),
       body: SingleChildScrollView(
@@ -144,80 +151,7 @@ class _SingleContractListingPageState extends State<SingleContractListingPage> {
                     EdgeInsets.only(left: marginDistance, right: marginDistance),
               ),
             ),
-            Column(
-              children: [
-                Container(
-                  margin: EdgeInsets.only(top: 20),
-                  child: Text('Contract Progress',
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold
-                    ),
-                  ),
-                ),
-                TimelineTile(
-                  alignment: TimelineAlign.manual,
-                  lineXY: 0.2,
-                  indicatorStyle: IndicatorStyle(
-                    color: appPrimaryColor!,
-                  ),
-                  afterLineStyle: LineStyle(
-                    color: appPrimaryColor!,
-                  ),
-                  endChild: Container(
-                    margin: EdgeInsets.only(left: 15),
-                    child: Text('Buyer Sent Payment'),
-                  ),
-                  isFirst: true,
-                ),
-                TimelineTile(
-                  alignment: TimelineAlign.manual,
-                  lineXY: 0.2,
-                  indicatorStyle: IndicatorStyle(
-
-                  ),
-                  endChild: Container(
-                    margin: EdgeInsets.only(left: 15),
-                    child: Text('Payment Received'),
-                  ),
-                ),
-                TimelineTile(
-                  alignment: TimelineAlign.manual,
-                  lineXY: 0.2,
-                  indicatorStyle: IndicatorStyle(
-
-                  ),
-                  endChild: Container(
-                    margin: EdgeInsets.only(left: 15),
-                    child: Text('Seller Sent Shipment'),
-                  ),
-                ),
-                TimelineTile(
-                  alignment: TimelineAlign.manual,
-                  lineXY: 0.2,
-                  indicatorStyle: IndicatorStyle(
-
-                  ),
-                  endChild: Container(
-                    margin: EdgeInsets.only(left: 15),
-                    child: Text('Buyer Confirmed Arrival'),
-                  ),
-                ),
-                TimelineTile(
-                  alignment: TimelineAlign.manual,
-                  lineXY: 0.2,
-                  indicatorStyle: IndicatorStyle(
-
-                  ),
-                  endChild: Container(
-                    margin: EdgeInsets.only(left: 15),
-                    child: Text('Payment Released to Seller'),
-                  ),
-                  isLast: true,
-                ),
-
-              ],
-            ),
+            getContractProgress(inContractHistory)
           ],
         ),
       ),

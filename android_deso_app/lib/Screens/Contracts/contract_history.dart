@@ -14,15 +14,25 @@ class ContractHistoryPage extends StatefulWidget {
 
 class _ContractHistoryPageState extends State<ContractHistoryPage> {
   // temp data to show a listing in the contracts page
-  List listingImages = ['lib/assets/1.jpg', 'lib/assets/2.jpg', 'lib/assets/3.jpg', 'lib/assets/4.jpg'];
-  String title = 'Yeezy Red Octobers';
-  String seller = 'ShoeCollector';
-  String price = '1000.495888773';
+  List listingImages = ['lib/assets/poke1.jpg', 'lib/assets/poke2.png', 'lib/assets/poke3.png',];
+  String title = 'PIKACHU ILLUSTRATOR PSA 9 MINT';
+  String seller = 'smpratte';
+  String price = '138985.4065323141';
+  String desc = 'The Most Valuable Pokemon Card: The Pikachu Illustrator PSA 9 Mint'
+  'This card is the Holy Grail of Pokemon; The most valuable Pokemon card in existence!'
+  'Rarer than Honus Wagner, Mickey Mantle, Black Lotus, & Charizard'
+  'The Pikachu Illustrator was only awarded to the winners of the Original Illustration Contest in Japan, 1998.  Estimated 20-39 copies'
+  'This is the Most Documented Copy of the Illustrator!  It was the only known Illustrator for a decade!'
+  'This exact Illustrator was the first PSA 9 Mint example'
+  'This card was featured in the PSA/SMR 2017 Trophy Card Article (image below)'
+  'This card is the Bulbapedia stock image (image below)'
+  'There is no card in this hobby that combines Value, Rarity, History than the Pikachu Illustrator.'
+  'The pictures are of the exact card';
   Listing temp = Listing('','','');
 
   @override
   void initState() {
-    temp = Listing(title, seller, price, images: listingImages);
+    temp = Listing(title, seller, price, images: listingImages, description: desc);
     super.initState();
   }
 
