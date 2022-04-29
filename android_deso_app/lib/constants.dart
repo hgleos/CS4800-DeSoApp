@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 final appPrimaryColor = Colors.blue[600];
+const iconSize = 30.0;
 
 // text style for the headings of various pages
 final TextStyle boldHeading = TextStyle(fontSize: 25, fontWeight: FontWeight.bold);

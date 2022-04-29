@@ -1,3 +1,4 @@
+import 'package:android_deso_app/Screens/Contracts/contracts_page.dart';
 import 'package:android_deso_app/Screens/Elements/app_bar.dart';
 import 'package:android_deso_app/Screens/Listings/listings_page.dart';
 import 'package:android_deso_app/Screens/Settings/settings_page.dart';
@@ -20,7 +21,7 @@ class _HomePage2State extends State<HomePage2> {
 
   final _pageOptions = [
     SettingsPage(),
-    Center(child: Text('Contracts', style: boldHeading)),
+    ContractsPage(),
     Center(child: Text('Home', style: boldHeading)),
     ListingsPage(),
     Center(child: Text('Cart', style: boldHeading)),

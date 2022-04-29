@@ -1,3 +1,4 @@
+import 'package:android_deso_app/Screens/Components/image_carousel.dart';
 import 'package:flutter/material.dart';
 import 'package:android_deso_app/Screens/Components/nft_border_side.dart';
 import 'package:android_deso_app/constants.dart';
@@ -24,7 +25,7 @@ NftListing(BuildContext context, String nftImage, String nftTitle,
             right: NftBorderSide(context),
             left: NftBorderSide(context),
           )),
-          child: image,
+          child: ImageCarousel(),
           margin: EdgeInsets.only(top: marginDistance, left: marginDistance, right: marginDistance),
         ),
       ),
