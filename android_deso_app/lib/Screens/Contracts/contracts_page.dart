@@ -1,7 +1,7 @@
+import 'package:android_deso_app/Screens/Components/listing.dart';
 import 'package:android_deso_app/Screens/Components/nft_listing.dart';
 import 'package:android_deso_app/Screens/Contracts/contract_history.dart';
-import 'package:android_deso_app/Screens/Listings/create_listing_page.dart';
-import 'package:android_deso_app/Screens/Listings/single_listing_page.dart';
+import 'package:android_deso_app/Screens/Contracts/single_listing_page.dart';
 import 'package:flutter/material.dart';
 
 class ContractsPage extends StatefulWidget {
@@ -12,6 +12,23 @@ class ContractsPage extends StatefulWidget {
 }
 
 class _ContractsPageState extends State<ContractsPage> {
+  // temp data to show a listing in the contracts page
+  List listingImages = ['lib/assets/1.jpg', 'lib/assets/2.jpg', 'lib/assets/3.jpg', 'lib/assets/4.jpg'];
+  String title = 'Yeezy Red Octobers';
+  String seller = 'ShoeCollector';
+  String price = '1000.495888773';
+  Listing temp = Listing('','','');
+
+  @override
+  void initState() {
+    temp = Listing(title, seller, price, images: listingImages);
+    super.initState();
+  }
+
+  Listing getListing(){
+    return temp;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +43,7 @@ class _ContractsPageState extends State<ContractsPage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const SingleListingPage()),
+                        builder: (context) => SingleContractListingPage(temp: temp)),
                   );
                 },
                 highlightColor: Colors.blue[200],
@@ -35,10 +52,10 @@ class _ContractsPageState extends State<ContractsPage> {
                 ),
                 child: NftListing(
                     context,
-                    'https://www.topgear.com/sites/default/files/images/news-article/2017/11/14407fdb851d08766e90724827008664/2019-corvette-zr1-worldpremier-02.jpg?w=1280&h=720',
-                    'Chevrolet Corvette ZR1 - 2019',
-                    'jellysmith987',
-                    '747.495888773'),
+                    listingImages,
+                    title,
+                    seller,
+                    price),
               ),
 
               InkWell(
@@ -47,7 +64,7 @@ class _ContractsPageState extends State<ContractsPage> {
                 customBorder: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: NftListing(context, 'lib/assets/default image.png',
+                child: NftListing(context, ['lib/assets/default image.png'],
                     'nftTitle', 'nftUsername', 'nftPrice'),
               ),
 
@@ -60,7 +77,7 @@ class _ContractsPageState extends State<ContractsPage> {
                 ),
                 child: NftListing(
                     context,
-                    'https://bg.systweak.com/blogs/wp-content/uploads/2022/03/How-To-Download-NVIDIA-GeForce-RTX-3050-Driver-1280x720.jpg',
+                    ['https://bg.systweak.com/blogs/wp-content/uploads/2022/03/How-To-Download-NVIDIA-GeForce-RTX-3050-Driver-1280x720.jpg'],
                     'MSI Gaming GeForce RTX 3050 8GB GDRR6 128-Bit HDMI/DP PCIe 4 Torx Twin Fans Ampere OC Graphics Card (RTX 3050 Ventus 2X 8G OC)',
                     'supercalifragilisticexpialidociouspneumonoultramicroscopicsilicovolcanoconiosis',
                     '99999999999999999999999999999999999999999999999999.999999999'),
@@ -75,7 +92,7 @@ class _ContractsPageState extends State<ContractsPage> {
                 ),
                 child: NftListing(
                     context,
-                    'https://i.pinimg.com/originals/35/85/69/358569e6abb282196ea4b7d7e9488c8f.jpg',
+                    ['https://i.pinimg.com/originals/35/85/69/358569e6abb282196ea4b7d7e9488c8f.jpg'],
                     'Image that isn\'t 16:9 ratio',
                     'Person321',
                     '505.123456789'),

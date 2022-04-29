@@ -4,15 +4,15 @@ import 'package:android_deso_app/Screens/Components/nft_border_side.dart';
 import 'package:android_deso_app/constants.dart';
 
 // The widget will be contained inside an InkWell for tap features
-NftListing(BuildContext context, String nftImage, String nftTitle,
+NftListing(BuildContext context, List nftImages, String nftTitle,
     String nftUsername, String nftPrice) {
   double marginDistance = 20;
   Image image;
-  if (nftImage.startsWith('https://')) {
-    image = Image.network(nftImage, fit: BoxFit.cover);
-  } else {
-    image = Image.asset(nftImage, fit: BoxFit.cover);
-  }
+  // if (nftImage.startsWith('https://')) {
+  //   image = Image.network(nftImage, fit: BoxFit.cover);
+  // } else {
+  //   image = Image.asset(nftImage, fit: BoxFit.cover);
+  // }
 
   return Column(
     children: [
@@ -25,7 +25,7 @@ NftListing(BuildContext context, String nftImage, String nftTitle,
             right: NftBorderSide(context),
             left: NftBorderSide(context),
           )),
-          child: ImageCarousel(),
+          child: ImageCarousel(listingImages: nftImages,),
           margin: EdgeInsets.only(top: marginDistance, left: marginDistance, right: marginDistance),
         ),
       ),
