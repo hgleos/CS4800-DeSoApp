@@ -5,6 +5,8 @@ import 'package:android_deso_app/Screens/Settings/settings_page.dart';
 import 'package:android_deso_app/constants.dart';
 import 'package:flutter/material.dart';
 
+import '../ShoppingCart/shopping_cart.dart';
+
 // https://stackoverflow.com/questions/63290506/flutter-multi-page-navigation-using-bottom-navigation-bar-icons
 
 class HomePage2 extends StatefulWidget {
@@ -24,7 +26,7 @@ class _HomePage2State extends State<HomePage2> {
     ContractsPage(),
     Center(child: Text('Home', style: boldHeading)),
     ListingsPage(),
-    Center(child: Text('Cart', style: boldHeading)),
+    ShoppingCartPage(),
   ];
 
   @override
