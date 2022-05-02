@@ -1,6 +1,7 @@
 import 'package:android_deso_app/Screens/Components/nft_listing.dart';
 import 'package:android_deso_app/Screens/Contracts/single_contract_listing_page.dart';
 import 'package:android_deso_app/Screens/Elements/app_bar.dart';
+import 'package:android_deso_app/Screens/ShoppingCart/payment.dart';
 import 'package:android_deso_app/Screens/ShoppingCart/sample_nft_data.dart';
 import 'package:flutter/material.dart';
 
@@ -41,7 +42,9 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
         // Checkout items button
       bottomNavigationBar: Container(
         child: ElevatedButton(
-          onPressed: () {}, // TODO go to checkout screen
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => PaymentPage()));
+          }, // TODO go to checkout screen
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all<Color>(Color(0xff178de8)),
             fixedSize: MaterialStateProperty.all<Size>(Size(270, 55)),
