@@ -13,6 +13,7 @@ class ContractHistoryPage extends StatefulWidget {
 }
 
 class _ContractHistoryPageState extends State<ContractHistoryPage> {
+  TextEditingController search = TextEditingController();
   // temp data to show a listing in the contracts page
   List listingImages = ['lib/assets/poke1.jpg', 'lib/assets/poke2.png', 'lib/assets/poke3.png',];
   String title = 'PIKACHU ILLUSTRATOR PSA 9 MINT';
@@ -40,84 +41,106 @@ class _ContractHistoryPageState extends State<ContractHistoryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: desoAppBar(context, true),
-      body: SingleChildScrollView(
-        child: Center(
-          // all the NFT listings
-          child: Column(
-            children: [
-              Container(
-                margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * .02),
-                child: Text(
-                  'Contract History',
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold
-                  ),
-                ),
+      body: Column(
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width,
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.black)
+            ),
+            child: TextField(
+              controller: search,
+              decoration: InputDecoration(
+                hintText: 'Search your contracts',
+                suffixIcon: IconButton(
+                    onPressed: (){},
+                    icon: Icon(Icons.search)),
               ),
-              // A single NFT listing - InkWell makes it clickable
-              InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => SingleContractListingPage(temp: temp)),
-                  );
-                },
-                highlightColor: Colors.blue[200],
-                customBorder: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: NftListing(
-                    context,
-                    listingImages,
-                    title,
-                    seller,
-                    price),
-              ),
-
-              InkWell(
-                onTap: () {},
-                highlightColor: Colors.blue[200],
-                customBorder: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: NftListing(context, ['lib/assets/default image.png'],
-                    'nftTitle', 'nftUsername', 'nftPrice'),
-              ),
-
-              // Overflow example
-              InkWell(
-                onTap: () {},
-                highlightColor: Colors.blue[200],
-                customBorder: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: NftListing(
-                    context,
-                    ['https://bg.systweak.com/blogs/wp-content/uploads/2022/03/How-To-Download-NVIDIA-GeForce-RTX-3050-Driver-1280x720.jpg'],
-                    'MSI Gaming GeForce RTX 3050 8GB GDRR6 128-Bit HDMI/DP PCIe 4 Torx Twin Fans Ampere OC Graphics Card (RTX 3050 Ventus 2X 8G OC)',
-                    'supercalifragilisticexpialidociouspneumonoultramicroscopicsilicovolcanoconiosis',
-                    '99999999999999999999999999999999999999999999999999.999999999'),
-              ),
-
-              // testing no image size
-              InkWell(
-                onTap: () {},
-                highlightColor: Colors.blue[200],
-                customBorder: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: NftListing(
-                    context,
-                    ['https://i.pinimg.com/originals/35/85/69/358569e6abb282196ea4b7d7e9488c8f.jpg'],
-                    'Image that isn\'t 16:9 ratio',
-                    'Person321',
-                    '505.123456789'),
-              ),
-            ],
+            ),
           ),
-        ),
+          Flexible(
+            child: SingleChildScrollView(
+            child: Center(
+              // all the NFT listings
+              child: Column(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * .02),
+                    child: Text(
+                      'Contract History',
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold
+                      ),
+                    ),
+                  ),
+                  // A single NFT listing - InkWell makes it clickable
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SingleContractListingPage(temp: temp)),
+                      );
+                    },
+                    highlightColor: Colors.blue[200],
+                    customBorder: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: NftListing(
+                        context,
+                        listingImages,
+                        title,
+                        seller,
+                        price),
+                  ),
+
+                  InkWell(
+                    onTap: () {},
+                    highlightColor: Colors.blue[200],
+                    customBorder: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: NftListing(context, ['lib/assets/default image.png'],
+                        'nftTitle', 'nftUsername', 'nftPrice'),
+                  ),
+
+                  // Overflow example
+                  InkWell(
+                    onTap: () {},
+                    highlightColor: Colors.blue[200],
+                    customBorder: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: NftListing(
+                        context,
+                        ['https://bg.systweak.com/blogs/wp-content/uploads/2022/03/How-To-Download-NVIDIA-GeForce-RTX-3050-Driver-1280x720.jpg'],
+                        'MSI Gaming GeForce RTX 3050 8GB GDRR6 128-Bit HDMI/DP PCIe 4 Torx Twin Fans Ampere OC Graphics Card (RTX 3050 Ventus 2X 8G OC)',
+                        'supercalifragilisticexpialidociouspneumonoultramicroscopicsilicovolcanoconiosis',
+                        '99999999999999999999999999999999999999999999999999.999999999'),
+                  ),
+
+                  // testing no image size
+                  InkWell(
+                    onTap: () {},
+                    highlightColor: Colors.blue[200],
+                    customBorder: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: NftListing(
+                        context,
+                        ['https://i.pinimg.com/originals/35/85/69/358569e6abb282196ea4b7d7e9488c8f.jpg'],
+                        'Image that isn\'t 16:9 ratio',
+                        'Person321',
+                        '505.123456789'),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ]
       ),
     );
   }
