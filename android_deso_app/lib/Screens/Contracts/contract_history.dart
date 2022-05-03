@@ -14,6 +14,7 @@ class ContractHistoryPage extends StatefulWidget {
 
 class _ContractHistoryPageState extends State<ContractHistoryPage> {
   TextEditingController search = TextEditingController();
+  List<Listing> feed = [];
   // temp data to show a listing in the contracts page
   List listingImages = ['lib/assets/poke1.jpg', 'lib/assets/poke2.png', 'lib/assets/poke3.png',];
   String title = 'PIKACHU ILLUSTRATOR PSA 9 MINT';
@@ -34,6 +35,7 @@ class _ContractHistoryPageState extends State<ContractHistoryPage> {
   @override
   void initState() {
     temp = Listing(title, seller, price, images: listingImages, description: desc);
+    feed.add(temp);
     super.initState();
   }
 
@@ -65,6 +67,7 @@ class _ContractHistoryPageState extends State<ContractHistoryPage> {
               // all the NFT listings
               child: Column(
                 children: [
+
                   Container(
                     margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * .02),
                     child: Text(
@@ -76,66 +79,8 @@ class _ContractHistoryPageState extends State<ContractHistoryPage> {
                     ),
                   ),
                   // A single NFT listing - InkWell makes it clickable
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => SingleContractListingPage(temp: temp)),
-                      );
-                    },
-                    highlightColor: Colors.blue[200],
-                    customBorder: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: NftListing(
-                        context,
-                        listingImages,
-                        title,
-                        seller,
-                        price),
-                  ),
-
-                  InkWell(
-                    onTap: () {},
-                    highlightColor: Colors.blue[200],
-                    customBorder: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: NftListing(context, ['lib/assets/default image.png'],
-                        'nftTitle', 'nftUsername', 'nftPrice'),
-                  ),
-
-                  // Overflow example
-                  InkWell(
-                    onTap: () {},
-                    highlightColor: Colors.blue[200],
-                    customBorder: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: NftListing(
-                        context,
-                        ['https://bg.systweak.com/blogs/wp-content/uploads/2022/03/How-To-Download-NVIDIA-GeForce-RTX-3050-Driver-1280x720.jpg'],
-                        'MSI Gaming GeForce RTX 3050 8GB GDRR6 128-Bit HDMI/DP PCIe 4 Torx Twin Fans Ampere OC Graphics Card (RTX 3050 Ventus 2X 8G OC)',
-                        'supercalifragilisticexpialidociouspneumonoultramicroscopicsilicovolcanoconiosis',
-                        '99999999999999999999999999999999999999999999999999.999999999'),
-                  ),
-
-                  // testing no image size
-                  InkWell(
-                    onTap: () {},
-                    highlightColor: Colors.blue[200],
-                    customBorder: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: NftListing(
-                        context,
-                        ['https://i.pinimg.com/originals/35/85/69/358569e6abb282196ea4b7d7e9488c8f.jpg'],
-                        'Image that isn\'t 16:9 ratio',
-                        'Person321',
-                        '505.123456789'),
-                    ),
-                  ],
+                  for(var i in feed) createInkWell(i),
+                ],
                 ),
               ),
             ),
@@ -144,4 +89,27 @@ class _ContractHistoryPageState extends State<ContractHistoryPage> {
       ),
     );
   }
+
+  Widget createInkWell(Listing item){
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => SingleContractListingPage(temp: item)),
+        );
+      },
+      highlightColor: Colors.blue[200],
+      customBorder: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: NftListing(
+          context,
+          item.images,
+          item.title,
+          item.seller,
+          item.price),
+    );
+  }
+
 }

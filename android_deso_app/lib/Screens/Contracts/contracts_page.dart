@@ -13,6 +13,7 @@ class ContractsPage extends StatefulWidget {
 
 class _ContractsPageState extends State<ContractsPage> {
   TextEditingController search = TextEditingController();
+  List<Listing> feed = [];
   // temp data to show a listing in the contracts page
   List listingImages = ['lib/assets/1.jpg', 'lib/assets/2.jpg', 'lib/assets/3.jpg', 'lib/assets/4.jpg'];
   String title = 'Yeezy Red Octobers';
@@ -23,6 +24,7 @@ class _ContractsPageState extends State<ContractsPage> {
   @override
   void initState() {
     temp = Listing(title, seller, price, images: listingImages);
+    feed.add(temp);
     super.initState();
   }
 
@@ -54,65 +56,7 @@ class _ContractsPageState extends State<ContractsPage> {
               child: Column(
                 children: [
                   // A single NFT listing - InkWell makes it clickable
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => SingleContractListingPage(temp: temp)),
-                      );
-                    },
-                    highlightColor: Colors.blue[200],
-                    customBorder: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: NftListing(
-                        context,
-                        listingImages,
-                        title,
-                        seller,
-                        price),
-                  ),
-
-                  InkWell(
-                    onTap: () {},
-                    highlightColor: Colors.blue[200],
-                    customBorder: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: NftListing(context, ['lib/assets/default image.png'],
-                        'nftTitle', 'nftUsername', 'nftPrice'),
-                  ),
-
-                  // Overflow example
-                  InkWell(
-                    onTap: () {},
-                    highlightColor: Colors.blue[200],
-                    customBorder: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: NftListing(
-                        context,
-                        ['https://bg.systweak.com/blogs/wp-content/uploads/2022/03/How-To-Download-NVIDIA-GeForce-RTX-3050-Driver-1280x720.jpg'],
-                        'MSI Gaming GeForce RTX 3050 8GB GDRR6 128-Bit HDMI/DP PCIe 4 Torx Twin Fans Ampere OC Graphics Card (RTX 3050 Ventus 2X 8G OC)',
-                        'supercalifragilisticexpialidociouspneumonoultramicroscopicsilicovolcanoconiosis',
-                        '99999999999999999999999999999999999999999999999999.999999999'),
-                  ),
-
-                  // testing no image size
-                  InkWell(
-                    onTap: () {},
-                    highlightColor: Colors.blue[200],
-                    customBorder: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: NftListing(
-                        context,
-                        ['https://i.pinimg.com/originals/35/85/69/358569e6abb282196ea4b7d7e9488c8f.jpg'],
-                        'Image that isn\'t 16:9 ratio',
-                        'Person321',
-                        '505.123456789'),
-                   ),
+                  for(var i in feed) createInkWell(i),
                  ],
                ),
              ),
@@ -148,4 +92,27 @@ class _ContractsPageState extends State<ContractsPage> {
       ),
     );
   }
+
+  Widget createInkWell(Listing item){
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => SingleContractListingPage(temp: item)),
+        );
+      },
+      highlightColor: Colors.blue[200],
+      customBorder: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: NftListing(
+          context,
+          item.images,
+          item.title,
+          item.seller,
+          item.price),
+    );
+  }
+
 }

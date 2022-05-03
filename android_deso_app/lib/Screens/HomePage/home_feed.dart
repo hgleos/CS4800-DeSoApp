@@ -1,8 +1,8 @@
 import 'package:android_deso_app/Screens/Components/listing.dart';
+import 'package:android_deso_app/Screens/Components/listing_details.dart';
 import 'package:flutter/material.dart';
 
 import '../Components/nft_listing.dart';
-import '../Contracts/single_contract_listing_page.dart';
 
 class HomeFeed extends StatefulWidget {
   const HomeFeed({Key? key}) : super(key: key);
@@ -101,7 +101,7 @@ class _HomeFeedState extends State<HomeFeed> {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => SingleContractListingPage(temp: item)),
+              builder: (context) => ListingDetails(temp: item)),
         );
       },
       highlightColor: Colors.blue[200],
