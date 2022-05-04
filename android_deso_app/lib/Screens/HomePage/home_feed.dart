@@ -14,6 +14,8 @@ class HomeFeed extends StatefulWidget {
 class _HomeFeedState extends State<HomeFeed> {
   TextEditingController search = TextEditingController();
   List<Listing> feed = [];
+  List<Listing> homeFeed = [];
+  List<Listing> searchFeed = [];
   Listing item1 = Listing('Mechanical Keyboard', 'BestKeyboard', '5',
       images: ['https://pbs.twimg.com/media/ELu5mLVU0AE8RIq?format=jpg&name=large',
         'https://pbs.twimg.com/media/ELu5nMVUwAAkluN?format=jpg&name=large',
@@ -51,7 +53,25 @@ class _HomeFeedState extends State<HomeFeed> {
   @override
   void initState() {
     feed = [item1, item2, item3, item4, item5];
+    homeFeed = feed;
     super.initState();
+  }
+
+  findSearch(TextEditingController search){
+    if (search.text == ''){
+      setState(() {
+        homeFeed = feed;
+      });
+    } else {
+      for(var item in homeFeed){
+        if(item.title.contains(search.text) || item.seller.contains(search.text) || item.description.contains(search.text)){
+          searchFeed.add(item);
+        }
+      }
+      setState(() {
+        homeFeed = searchFeed;
+      });
+    }
   }
   
   
@@ -71,7 +91,9 @@ class _HomeFeedState extends State<HomeFeed> {
                 decoration: InputDecoration(
                   hintText: 'Search',
                   suffixIcon: IconButton(
-                      onPressed: (){},
+                      onPressed: (){
+                        findSearch(search);
+                      },
                       icon: Icon(Icons.search)),
                 ),
               ),
@@ -84,7 +106,7 @@ class _HomeFeedState extends State<HomeFeed> {
                     children: [
                       // A single NFT listing - InkWell makes it clickable
                       // iterating through the list to create individual inkwells
-                      for(var i in feed) createInkWell(i),
+                      for(var i in homeFeed) createInkWell(i),
                     ],
                   ),
                 ),
