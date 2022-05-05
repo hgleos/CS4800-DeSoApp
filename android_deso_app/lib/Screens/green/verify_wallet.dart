@@ -1,6 +1,6 @@
-import 'package:deso_app/Screens/Elements/app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:deso_app/Screens/Elements/app_bottom_navigation_bar.dart';
+
+import '../Elements/app_bar.dart';
 
 class VerifyWallet extends StatefulWidget {
   const VerifyWallet({Key? key}) : super(key: key);

@@ -1,5 +1,6 @@
-import 'package:deso_app/Screens/Elements/app_bar.dart';
 import 'package:flutter/material.dart';
+
+import '../Elements/app_bar.dart';
 
 class BuyNFT extends StatefulWidget {
   const BuyNFT({Key? key}) : super(key: key);

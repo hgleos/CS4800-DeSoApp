@@ -1,5 +1,6 @@
-import 'package:deso_app/Screens/green/email_sent.dart';
 import 'package:flutter/material.dart';
+
+import 'email_sent.dart';
 
 class ForgotPage extends StatefulWidget {
   const ForgotPage({Key? key}) : super(key: key);

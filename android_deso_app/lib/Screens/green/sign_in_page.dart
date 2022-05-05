@@ -1,6 +1,7 @@
-import 'package:deso_app/Screens/green/create_account.dart';
-import 'package:deso_app/Screens/green/forgot_page.dart';
 import 'package:flutter/material.dart';
+
+import 'create_account.dart';
+import 'forgot_page.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);
