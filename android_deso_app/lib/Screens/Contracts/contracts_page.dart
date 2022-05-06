@@ -1,4 +1,4 @@
-import 'package:android_deso_app/Screens/Components/listing.dart';
+import 'package:android_deso_app/Database/listing.dart';
 import 'package:android_deso_app/Screens/Components/nft_listing.dart';
 import 'package:android_deso_app/Screens/Contracts/contract_history.dart';
 import 'package:android_deso_app/Screens/Contracts/single_contract_listing_page.dart';

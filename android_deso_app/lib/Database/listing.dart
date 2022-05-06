@@ -1,10 +1,13 @@
+import 'package:android_deso_app/Database/database.dart';
+
 class Listing {
-  List images = ['lib/assets/default image.png'];
+  String listingID = (Database().feed.length + 1).toString();
+  List images = [];
   String title;
   String description;
   String seller;
   String buyer = '';
-  String price = '0';
+  String price;
 
   Listing(this.title, this.seller, this.price, {this.images = const ['lib/assets/default image.png'], this.description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
       'Nam eleifend sapien nulla, ac ultricies erat eleifend at. '

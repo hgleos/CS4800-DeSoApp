@@ -2,7 +2,7 @@ import 'package:android_deso_app/Screens/Contracts/single_contract_listing_page.
 import 'package:android_deso_app/Screens/Elements/app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:timeline_tile/timeline_tile.dart';
-import '../Components/listing.dart';
+import '../../Database/listing.dart';
 import '../Components/nft_listing.dart';
 
 class ContractHistoryPage extends StatefulWidget {

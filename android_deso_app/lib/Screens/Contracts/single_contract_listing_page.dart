@@ -1,5 +1,5 @@
 import 'package:android_deso_app/Screens/Components/image_carousel.dart';
-import 'package:android_deso_app/Screens/Components/listing.dart';
+import 'package:android_deso_app/Database/listing.dart';
 import 'package:android_deso_app/Screens/Contracts/contract_progress.dart';
 import 'package:android_deso_app/Screens/Elements/app_bar.dart';
 import 'package:android_deso_app/Screens/Elements/app_bottom_navigation_bar2.dart';

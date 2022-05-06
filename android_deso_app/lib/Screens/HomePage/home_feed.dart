@@ -1,7 +1,9 @@
-import 'package:android_deso_app/Screens/Components/listing.dart';
+import 'package:android_deso_app/Database/database.dart';
+import 'package:android_deso_app/Database/listing.dart';
 import 'package:android_deso_app/Screens/Components/listing_details.dart';
 import 'package:flutter/material.dart';
 
+import '../../main.dart';
 import '../Components/nft_listing.dart';
 
 class HomeFeed extends StatefulWidget {
@@ -63,8 +65,10 @@ class _HomeFeedState extends State<HomeFeed> {
         homeFeed = feed;
       });
     } else {
+      homeFeed = feed;
+      searchFeed = [];
       for(var item in homeFeed){
-        if(item.title.contains(search.text) || item.seller.contains(search.text) || item.description.contains(search.text)){
+        if(item.title.toLowerCase().contains(search.text.toLowerCase()) || item.seller.toLowerCase().contains(search.text.toLowerCase()) || item.description.toLowerCase().contains(search.text.toLowerCase())){
           searchFeed.add(item);
         }
       }
