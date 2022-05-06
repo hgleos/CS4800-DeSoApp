@@ -2,6 +2,7 @@ import 'package:android_deso_app/Screens/Listings/listings_page.dart';
 import 'package:android_deso_app/Screens/Settings/settings_page.dart';
 import 'package:android_deso_app/constants.dart';
 import 'package:flutter/material.dart';
+import '../ShoppingCart/shopping_cart.dart';
 import 'app_bar.dart';
 
 class AppBottomNavBar extends StatefulWidget {
@@ -30,10 +31,7 @@ class _AppBottomNavBarState extends State<AppBottomNavBar> {
       style: optionStyle,
     ),
     ListingsPage(),
-    Text(
-      'Index 3: Cart',
-      style: optionStyle,
-    ),
+    ShoppingCartPage(),
   ];
 
   // updates the state of the app to the currently selected option on the bottom nav bar
