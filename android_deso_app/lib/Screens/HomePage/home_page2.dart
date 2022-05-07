@@ -1,3 +1,4 @@
+import 'package:android_deso_app/Database/database.dart';
 import 'package:android_deso_app/Screens/Contracts/contracts_page.dart';
 import 'package:android_deso_app/Screens/Elements/app_bar.dart';
 import 'package:android_deso_app/Screens/HomePage/home_feed.dart';
@@ -34,7 +35,7 @@ class _HomePage2State extends State<HomePage2> {
   Widget build(BuildContext context) {
     return Scaffold(
         // the desoAppBar when true means user is signed in, when false no user is signed in
-        appBar: desoAppBar(context, false),
+        appBar: desoAppBar(context, loggedIn),
         body: _pageOptions[selectedPage],
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,

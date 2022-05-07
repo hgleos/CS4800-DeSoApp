@@ -19,11 +19,11 @@ class _ContractsPageState extends State<ContractsPage> {
   String title = 'Yeezy Red Octobers';
   String seller = 'ShoeCollector';
   String price = '1000.495888773';
-  Listing temp = Listing('','','');
+  Listing temp = Listing(1, '','','');
 
   @override
   void initState() {
-    temp = Listing(title, seller, price, images: listingImages);
+    temp = Listing(1, title, seller, price, images: listingImages);
     feed.add(temp);
     super.initState();
   }

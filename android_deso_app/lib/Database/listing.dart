@@ -1,7 +1,7 @@
 import 'package:android_deso_app/Database/database.dart';
 
 class Listing {
-  String listingID = (Database().feed.length + 1).toString();
+  num listingID;
   List images = [];
   String title;
   String description;
@@ -9,7 +9,7 @@ class Listing {
   String buyer = '';
   String price;
 
-  Listing(this.title, this.seller, this.price, {this.images = const ['lib/assets/default image.png'], this.description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
+  Listing(this.listingID, this.title, this.seller, this.price, {this.images = const ['lib/assets/default image.png'], this.description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
       'Nam eleifend sapien nulla, ac ultricies erat eleifend at. '
       'Praesent facilisis semper bibendum. Pellentesque tincidunt tortor velit,'
       ' et ultrices magna hendrerit eu. Vivamus cursus pharetra interdum. '

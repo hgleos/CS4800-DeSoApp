@@ -30,11 +30,11 @@ class _ContractHistoryPageState extends State<ContractHistoryPage> {
   'This card is the Bulbapedia stock image (image below)'
   'There is no card in this hobby that combines Value, Rarity, History than the Pikachu Illustrator.'
   'The pictures are of the exact card';
-  Listing temp = Listing('','','');
+  Listing temp = Listing(1, '','','');
 
   @override
   void initState() {
-    temp = Listing(title, seller, price, images: listingImages, description: desc);
+    temp = Listing(1, title, seller, price, images: listingImages, description: desc);
     feed.add(temp);
     super.initState();
   }

@@ -130,7 +130,7 @@ class _ListingDetailsState extends State<ListingDetails> {
               child: Container(
                 padding: EdgeInsets.only(left: 3),
                 // necessary width because otherwise if text is too small the scroll messes it up
-                height: MediaQuery.of(context).size.height * .45,
+                height: MediaQuery.of(context).size.height * .35,
                 decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border(
@@ -150,6 +150,22 @@ class _ListingDetailsState extends State<ListingDetails> {
                 margin:
                 EdgeInsets.only(left: marginDistance, right: marginDistance),
               ),
+
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 25),
+              child: ElevatedButton(
+                  onPressed: () {
+                  },
+                  style: ButtonStyle(
+                      backgroundColor:
+                      MaterialStateProperty.all<Color>(Color(0xff178de8)),
+                      fixedSize: MaterialStateProperty.all<Size>(Size(270, 55)),
+                      textStyle: MaterialStateProperty.all<TextStyle>(
+                          TextStyle(fontSize: 20, color: Colors.white))),
+                  child: Text(
+                    'Add to Cart',
+                  )),
             ),
           ],
         ),

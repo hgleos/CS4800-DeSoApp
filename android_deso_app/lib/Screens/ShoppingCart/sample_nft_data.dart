@@ -1,8 +1,8 @@
-import '../Components/listing.dart';
+import '../../Database/listing.dart';
 
 class SampleNFTData {
   static List nfts = [
-    Listing(
+    Listing(1,
       'Explosive Archer',
       'robinhoodlikesboom',
       '4623.4745657',
