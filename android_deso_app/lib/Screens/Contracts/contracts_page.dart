@@ -1,3 +1,4 @@
+import 'package:android_deso_app/Database/database.dart';
 import 'package:android_deso_app/Database/listing.dart';
 import 'package:android_deso_app/Screens/Components/nft_listing.dart';
 import 'package:android_deso_app/Screens/Contracts/contract_history.dart';
@@ -13,18 +14,19 @@ class ContractsPage extends StatefulWidget {
 
 class _ContractsPageState extends State<ContractsPage> {
   TextEditingController search = TextEditingController();
-  List<Listing> feed = [];
+  List<Listing> contractFeed = [];
   // temp data to show a listing in the contracts page
-  List listingImages = ['lib/assets/1.jpg', 'lib/assets/2.jpg', 'lib/assets/3.jpg', 'lib/assets/4.jpg'];
-  String title = 'Yeezy Red Octobers';
-  String seller = 'ShoeCollector';
-  String price = '1000.495888773';
-  Listing temp = Listing(1, '','','');
+  // List listingImages = ['lib/assets/1.jpg', 'lib/assets/2.jpg', 'lib/assets/3.jpg', 'lib/assets/4.jpg'];
+  // String title = 'Yeezy Red Octobers';
+  // String seller = 'ShoeCollector';
+  // String price = '1000.495888773';
+  // Listing temp = Listing(1, '','','');
 
   @override
   void initState() {
-    temp = Listing(1, title, seller, price, images: listingImages);
-    feed.add(temp);
+    // temp = Listing(1, title, seller, price, images: listingImages);
+    // feed.add(temp);
+    contractFeed = getCurrentContracts();
     super.initState();
   }
 
@@ -56,7 +58,7 @@ class _ContractsPageState extends State<ContractsPage> {
               child: Column(
                 children: [
                   // A single NFT listing - InkWell makes it clickable
-                  for(var i in feed) createInkWell(i),
+                  for(var i in contractFeed) createInkWell(i),
                  ],
                ),
              ),

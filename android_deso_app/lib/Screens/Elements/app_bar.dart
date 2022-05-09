@@ -1,3 +1,4 @@
+import 'package:android_deso_app/Screens/green/sign_in_page.dart';
 import 'package:flutter/material.dart';
 
 desoAppBar(BuildContext context, bool loggedIn) {
@@ -62,7 +63,9 @@ desoAppBar(BuildContext context, bool loggedIn) {
         Container(
           margin: EdgeInsets.only(right: 10),
           child: TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const SignInPage()));
+            },
             child: Text(
               "Sign In",
               style: TextStyle(color: Colors.black, fontSize: 16),

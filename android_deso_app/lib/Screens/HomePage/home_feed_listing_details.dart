@@ -1,10 +1,8 @@
+import 'package:android_deso_app/Database/database.dart';
 import 'package:android_deso_app/Screens/Components/image_carousel.dart';
 import 'package:android_deso_app/Database/listing.dart';
-import 'package:android_deso_app/Screens/Contracts/contract_progress.dart';
 import 'package:android_deso_app/Screens/Elements/app_bar.dart';
-import 'package:android_deso_app/Screens/Elements/app_bottom_navigation_bar2.dart';
 import 'package:flutter/material.dart';
-import 'package:timeline_tile/timeline_tile.dart';
 import '../../constants.dart';
 import '../Components/nft_border_side.dart';
 
@@ -33,7 +31,7 @@ class _ListingDetailsState extends State<ListingDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: desoAppBar(context, true),
+      appBar: desoAppBar(context, loggedIn),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -156,6 +154,8 @@ class _ListingDetailsState extends State<ListingDetails> {
               margin: EdgeInsets.only(top: 25),
               child: ElevatedButton(
                   onPressed: () {
+                    addToCart(widget.temp);
+                    openDialog();
                   },
                   style: ButtonStyle(
                       backgroundColor:
@@ -173,4 +173,23 @@ class _ListingDetailsState extends State<ListingDetails> {
       // bottomNavigationBar: AppBottomNavBar2(),
     );
   }
+
+  void openDialog() => showDialog(
+    context: context,
+    builder: (context) {
+      Future.delayed(Duration(milliseconds: 500), (){
+        Navigator.of(context).pop(true);
+      });
+      return AlertDialog(
+        content: Text("Added to Cart",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 30,
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: Colors.green,
+      );
+    });
 }

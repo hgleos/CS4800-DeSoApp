@@ -1,6 +1,6 @@
 import 'package:android_deso_app/Database/database.dart';
 import 'package:android_deso_app/Database/listing.dart';
-import 'package:android_deso_app/Screens/Components/listing_details.dart';
+import 'package:android_deso_app/Screens/HomePage/home_feed_listing_details.dart';
 import 'package:flutter/material.dart';
 
 import '../Components/nft_listing.dart';
@@ -89,6 +89,7 @@ class _HomeFeedState extends State<HomeFeed> {
     return InkWell(
       onTap: () {
         print(item.listingID);
+        print(item.status);
         Navigator.push(
           context,
           MaterialPageRoute(

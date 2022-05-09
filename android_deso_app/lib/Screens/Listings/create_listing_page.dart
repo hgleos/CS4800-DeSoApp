@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:android_deso_app/Database/database.dart';
+import 'package:android_deso_app/Database/listing.dart';
 import 'package:android_deso_app/Screens/Elements/app_bar.dart';
 import 'package:android_deso_app/Screens/Elements/app_bottom_navigation_bar2.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +20,8 @@ class CreateListingPage extends StatefulWidget {
 }
 
 class _CreateListingPageState extends State<CreateListingPage> {
+  TextEditingController title = TextEditingController();
+  TextEditingController price = TextEditingController();
   final ImagePicker _picker = ImagePicker();
   List<XFile>? _imageFileList = [];
 
@@ -43,7 +47,10 @@ class _CreateListingPageState extends State<CreateListingPage> {
                     margin: EdgeInsets.only(top: 20),
                     child: ElevatedButton(
                         onPressed: () {
-                          _formkey.currentState!.validate();
+                          if(_formkey.currentState!.validate()){
+                            // creating a Listing and adding it to the "database" by using createListing()
+                            createListing(Listing(generateListingID(), title.text, loggedInUser, price.text));
+                          };
 
                         },
                         style: elevatedButtonStyle,
@@ -55,6 +62,7 @@ class _CreateListingPageState extends State<CreateListingPage> {
                   Container(
                     margin: EdgeInsets.only(top: 20),
                     child: TextFormField(
+                      controller: title,
                       maxLength: 200,
                       textInputAction: TextInputAction.next,
                       validator: (s) {
@@ -72,6 +80,7 @@ class _CreateListingPageState extends State<CreateListingPage> {
                   Container(
                     margin: EdgeInsets.only(top: 5),
                     child: TextFormField(
+                      controller: price,
                       keyboardType: TextInputType.numberWithOptions(
                           decimal: true, signed: false),
                       textInputAction: TextInputAction.next,

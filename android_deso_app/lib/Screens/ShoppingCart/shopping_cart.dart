@@ -1,9 +1,14 @@
+import 'package:android_deso_app/Database/database.dart';
 import 'package:android_deso_app/Screens/Components/nft_listing.dart';
 import 'package:android_deso_app/Screens/Contracts/single_contract_listing_page.dart';
 import 'package:android_deso_app/Screens/Elements/app_bar.dart';
+import 'package:android_deso_app/Screens/ShoppingCart/cart_feed_listing_details.dart';
 import 'package:android_deso_app/Screens/ShoppingCart/payment.dart';
 import 'package:android_deso_app/Screens/ShoppingCart/sample_nft_data.dart';
 import 'package:flutter/material.dart';
+
+import '../../Database/listing.dart';
+import '../HomePage/home_feed_listing_details.dart';
 
 class ShoppingCartPage extends StatefulWidget {
   const ShoppingCartPage({Key? key}) : super(key: key);
@@ -21,19 +26,22 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
         child: Center(
           child: Column(
               children: [
-                InkWell(
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => SingleContractListingPage(temp: SampleNFTData.nfts[0])));
-                    },
-                    highlightColor: Colors.blue[200],
-                    customBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                    child: Stack(
-                        children: [
-                          NftListing(context, SampleNFTData.nfts[0].images, SampleNFTData.nfts[0].title, SampleNFTData.nfts[0].seller, SampleNFTData.nfts[0].price),
-                          Positioned(child: Icon(Icons.delete, size: 50, color: Color.fromARGB(255, 70, 70, 70)), right: 15, top: 20)
-                        ]
-                    )
-                )
+                // InkWell(
+                //     onTap: () {
+                //       Navigator.push(context, MaterialPageRoute(builder: (context) => SingleContractListingPage(temp: SampleNFTData.nfts[0])));
+                //     },
+                //     highlightColor: Colors.blue[200],
+                //     customBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                //     child: Stack(
+                //         children: [
+                //           NftListing(context, SampleNFTData.nfts[0].images, SampleNFTData.nfts[0].title, SampleNFTData.nfts[0].seller, SampleNFTData.nfts[0].price),
+                //           Positioned(child: Icon(Icons.delete, size: 50, color: Color.fromARGB(255, 70, 70, 70)), right: 15, top: 20)
+                //         ]
+                //     )
+                // )
+                // A single NFT listing - InkWell makes it clickable
+                // iterating through the list to create individual inkwells
+                for(var i in getCartFeed()) createInkWell(i),
               ]
           )
         )
@@ -55,4 +63,29 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
       )
     );
   }
+
+  Widget createInkWell(Listing item){
+    return InkWell(
+      onTap: () {
+        print(item.listingID);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => CartListingDetails(temp: item)),
+        );
+      },
+      highlightColor: Colors.blue[200],
+      customBorder: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Stack(
+        children: [
+          NftListing(context, item.images, item.title, item.seller, item.price),
+          Positioned(child: Icon(Icons.delete, size: 50, color: Color.fromARGB(255, 70, 70, 70)), right: 15, top: 20)
+        ]
+      )
+    );
+  }
+
+
 }
