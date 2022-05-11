@@ -32,64 +32,85 @@ class _ContractsPageState extends State<ContractsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.black)
-            ),
-            child: TextField(
-              controller: search,
-              decoration: InputDecoration(
-                hintText: 'Search your contracts',
-                suffixIcon: IconButton(
-                    onPressed: (){},
-                    icon: Icon(Icons.search)),
+    if(loggedIn){
+      return Scaffold(
+        body: Column(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width,
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black)
+                ),
+                child: TextField(
+                  controller: search,
+                  decoration: InputDecoration(
+                    hintText: 'Search your contracts',
+                    suffixIcon: IconButton(
+                        onPressed: (){},
+                        icon: Icon(Icons.search)),
+                  ),
+                ),
               ),
+              Flexible(
+                child: SingleChildScrollView(
+                  child: Center(
+                    // all the NFT listings
+                    child: Column(
+                      children: [
+                        // A single NFT listing - InkWell makes it clickable
+                        for(var i in contractFeed) createInkWell(i),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ]
+        ),
+        bottomNavigationBar: Container(
+          child: BottomAppBar(
+            color: Colors.white,
+            child: Container(
+              margin: EdgeInsets.only(),
+              child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ContractHistoryPage()),
+                    );
+                  },
+                  style: ButtonStyle(
+                      backgroundColor:
+                      MaterialStateProperty.all<Color>(Color(0xff178de8)),
+                      fixedSize: MaterialStateProperty.all<Size>(Size(270, 55)),
+                      textStyle: MaterialStateProperty.all<TextStyle>(
+                          TextStyle(fontSize: 20, color: Colors.white))),
+                  child: Text(
+                    'Contract History',
+                  )),
             ),
+            elevation: 0,
           ),
-          Flexible(
-            child: SingleChildScrollView(
-            child: Center(
-              // all the NFT listings
-              child: Column(
-                children: [
-                  // A single NFT listing - InkWell makes it clickable
-                  for(var i in contractFeed) createInkWell(i),
-                 ],
-               ),
-             ),
-            ),
-          ),
-        ]
-      ),
-      bottomNavigationBar: Container(
-        child: BottomAppBar(
-          color: Colors.white,
-          child: Container(
-            margin: EdgeInsets.only(),
-            child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const ContractHistoryPage()),
-                  );
-                },
-                style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Color(0xff178de8)),
-                    fixedSize: MaterialStateProperty.all<Size>(Size(270, 55)),
-                    textStyle: MaterialStateProperty.all<TextStyle>(
-                        TextStyle(fontSize: 20, color: Colors.white))),
-                child: Text(
-                  'Contract History',
-                )),
-          ),
-          elevation: 0,
+        ),
+      );
+    }
+    return Scaffold(
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              alignment: Alignment.center,
+              child: Text("Please sign in to view your contracts",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );

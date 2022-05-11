@@ -29,6 +29,7 @@ class _HomeFeedState extends State<HomeFeed> {
         homeFeed = getFeed();
       });
     } else {
+      // resetting the home feed to all listings
       homeFeed = getFeed();
       searchFeed = [];
       for(var item in homeFeed){

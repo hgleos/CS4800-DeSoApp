@@ -1,3 +1,4 @@
+import 'package:android_deso_app/Database/database.dart';
 import 'package:flutter/material.dart';
 
 import 'create_account.dart';
@@ -11,6 +12,9 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
+  TextEditingController usernameCont = TextEditingController();
+  TextEditingController passwordCont = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,6 +64,7 @@ class _SignInPageState extends State<SignInPage> {
           Container(
             margin: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
             child: TextField(
+              controller: usernameCont,
               decoration: InputDecoration(
                 labelText: 'username',
                 border: OutlineInputBorder(),
@@ -69,6 +74,7 @@ class _SignInPageState extends State<SignInPage> {
           Container(
             margin: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
             child: TextField(
+              controller: passwordCont,
               decoration: InputDecoration(
                 labelText: 'password',
                 border: OutlineInputBorder(),
@@ -79,7 +85,15 @@ class _SignInPageState extends State<SignInPage> {
             width: 200,
             margin: EdgeInsets.only(top: 10, bottom: 10),
             child: ElevatedButton(
-                onPressed: (){},
+                onPressed: (){
+                  if(login(usernameCont.text, passwordCont.text)){
+                    Navigator.pop(context);
+                    setState(() {
+
+                    });
+                  };
+
+                },
                 child: Text('Continue')
             ),
           ),

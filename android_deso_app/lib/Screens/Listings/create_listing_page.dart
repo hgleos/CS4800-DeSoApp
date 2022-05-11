@@ -31,7 +31,7 @@ class _CreateListingPageState extends State<CreateListingPage> {
     return Form(
       key: _formkey,
       child: Scaffold(
-        appBar: desoAppBar(context, true),
+        appBar: desoAppBar(context, loggedIn),
           body: Center(
             child: SafeArea(
               child: Column(

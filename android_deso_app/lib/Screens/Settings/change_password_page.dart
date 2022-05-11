@@ -178,7 +178,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
             ],
           ),
         ),
-        bottomNavigationBar: AppBottomNavBar2(),
+        // bottomNavigationBar: AppBottomNavBar2(),
       ),
     );
   }

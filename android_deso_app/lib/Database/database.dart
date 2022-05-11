@@ -39,7 +39,7 @@ Listing item5 = Listing(5, '720Hz Monitor', user1.username, '1938.435632543',
     'https://mir-s3-cdn-cf.behance.net/project_modules/2800_opt_1/acfd56114240597.60379bba2cff5.jpg',
     'https://mir-s3-cdn-cf.behance.net/project_modules/2800_opt_1/2ea081114240597.60379bba2f85d.jpg',
 ]);
-Listing item6 = Listing(6, 'Yeezy Red Octobers', user3.username, '1000.495888773', status: 2, buyer: user1.username,
+Listing item6 = Listing(6, 'Yeezy Red Octobers', user3.username, '1000.495888773', status: 2, buyer: user3.username,
     images: ['lib/assets/1.jpg',
       'lib/assets/2.jpg',
       'lib/assets/3.jpg',
@@ -138,8 +138,11 @@ List<Listing> cart = [];
       if(username == i.username && password == i.password){
         loggedInUser = i.username;
         loggedIn = true;
+
+        return loggedIn;
       }
     }
+    return loggedIn;
   }
 
   // function to log out
