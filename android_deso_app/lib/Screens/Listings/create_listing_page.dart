@@ -23,6 +23,7 @@ class CreateListingPage extends StatefulWidget {
 class _CreateListingPageState extends State<CreateListingPage> {
   TextEditingController title = TextEditingController();
   TextEditingController price = TextEditingController();
+  TextEditingController desc = TextEditingController();
   final ImagePicker _picker = ImagePicker();
   List<XFile>? _imageFileList = [];
 
@@ -49,8 +50,17 @@ class _CreateListingPageState extends State<CreateListingPage> {
                     child: ElevatedButton(
                         onPressed: () {
                           if(_formkey.currentState!.validate() && _imageFileList!.length != 0){
+                            List<String> imagePaths = [];
                             // creating a Listing and adding it to the "database" by using createListing()
-                            createListing(Listing(generateListingID(), title.text, loggedInUser, price.text));
+                            for(var image in _imageFileList!){
+                              imagePaths.add(image.path);
+                            }
+                            if(desc.text == ''){
+                              createListing(Listing(generateListingID(), title.text, loggedInUser, price.text, images: imagePaths));
+                            } else {
+                              createListing(Listing(generateListingID(), title.text, loggedInUser, price.text, images: imagePaths, description: desc.text));
+                            }
+
                             Navigator.pop(context);
                           };
 
@@ -104,6 +114,7 @@ class _CreateListingPageState extends State<CreateListingPage> {
                   Container(
                     margin: EdgeInsets.only(top: 5),
                     child: TextFormField(
+                      controller: desc,
                       maxLines: 2,
                       maxLength: 1000,
                       textInputAction: TextInputAction.next,
