@@ -65,14 +65,14 @@ class _WalletPageState extends State<WalletPage> {
         bottomNavigationBar: Container(
             child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const PaymentSentPage()));
+                  Navigator.pop(context);
                 },
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(Color(0xff178de8)),
                     fixedSize: MaterialStateProperty.all<Size>(Size(270, 55)),
                     textStyle: MaterialStateProperty.all<TextStyle>(TextStyle(fontSize: 20, color: Colors.white))
                 ),
-                child: Text('Return to checkout')
+                child: Text('Return to payment')
             )
         )
     );

@@ -1,6 +1,7 @@
 import 'package:android_deso_app/Database/database.dart';
 import 'package:android_deso_app/Database/listing.dart';
 import 'package:android_deso_app/Screens/HomePage/home_feed_listing_details.dart';
+import 'package:android_deso_app/Screens/Listings/single_listing_page.dart';
 import 'package:flutter/material.dart';
 
 import '../Components/nft_listing.dart';
@@ -91,11 +92,21 @@ class _HomeFeedState extends State<HomeFeed> {
       onTap: () {
         print(item.listingID);
         print(item.status);
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => ListingDetails(temp: item)),
-        );
+        if (loggedInUser == item.seller) {
+          Navigator.push(context, MaterialPageRoute(
+
+
+              builder: (context) => SingleListingDetails(temp: item)),
+          );
+        } else {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+
+
+                builder: (context) => ListingDetails(temp: item)),
+          );
+        }
       },
       highlightColor: Colors.blue[200],
       customBorder: RoundedRectangleBorder(

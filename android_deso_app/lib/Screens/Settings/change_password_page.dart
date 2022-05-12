@@ -1,7 +1,9 @@
+import 'package:android_deso_app/Database/database.dart';
 import 'package:android_deso_app/Screens/Elements/app_bar.dart';
 import 'package:android_deso_app/Screens/Elements/app_bottom_navigation_bar2.dart';
 import 'package:flutter/material.dart';
 import 'package:android_deso_app/constants.dart';
+import 'dart:developer';
 
 class ChangePasswordPage extends StatefulWidget {
   const ChangePasswordPage({Key? key}) : super(key: key);
@@ -52,6 +54,9 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController enteredPassword = TextEditingController();
+    TextEditingController newPassword = TextEditingController();
+
     return Form(
       key: _formkey,
       child: Scaffold(
@@ -69,6 +74,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
               Container(
                 margin: EdgeInsets.only(top: 20),
                 child: TextFormField(
+                  controller: enteredPassword,
                   textInputAction: TextInputAction.next,
                   obscureText: obscurePassword,
                   autocorrect: false,
@@ -78,7 +84,8 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                     if (s!.isEmpty) {
                       return 'This is a required field.';
                     }
-                    if (true) {
+                    if (!passwordsMatch(enteredPassword.text)) {
+                      log("passwordsMatch()"); // test code
                       return 'The password you have entered is incorrect.';
                     }
                   },
@@ -109,6 +116,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
               Container(
                 margin: EdgeInsets.only(top: 5),
                 child: TextFormField(
+                  controller: newPassword,
                   textInputAction: TextInputAction.next,
                   obscureText: obscurePassword2,
                   autocorrect: false,
@@ -168,7 +176,10 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                 margin: EdgeInsets.only(top: 15),
                 child: ElevatedButton(
                     onPressed: () {
-                      _formkey.currentState!.validate();
+                      if (_formkey.currentState!.validate()) {
+                        updatePassword(newPassword.text);
+                        Navigator.pop(context);
+                      }
                     },
                     style: elevatedButtonStyle,
                     child: Text(

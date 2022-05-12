@@ -1,3 +1,4 @@
+import 'package:android_deso_app/Database/database.dart';
 import 'package:android_deso_app/Screens/Elements/app_bar.dart';
 import 'package:android_deso_app/Screens/Elements/app_bottom_navigation_bar2.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,7 @@ class _UpdateWalletPageState extends State<UpdateWalletPage> {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController enteredPassword = TextEditingController();
     return Form(
       key: _formkey,
       child: Scaffold(
@@ -50,7 +52,7 @@ class _UpdateWalletPageState extends State<UpdateWalletPage> {
                       if (s!.isEmpty) {
                         return 'This is a required field.';
                       }
-                      if (true) {
+                      if (s.length != 55) {
                         return 'Enter a valid DeSo wallet address.';
                       }
                     },
@@ -65,6 +67,7 @@ class _UpdateWalletPageState extends State<UpdateWalletPage> {
                 Container(
                   margin: EdgeInsets.only(top: 5),
                   child: TextFormField(
+                    controller: enteredPassword,
                     obscureText: obscurePassword,
                     autocorrect: false,
                     enableSuggestions: false,
@@ -73,7 +76,7 @@ class _UpdateWalletPageState extends State<UpdateWalletPage> {
                       if (s!.isEmpty) {
                         return 'This is a required field.';
                       }
-                      if (true) {
+                      if (!passwordsMatch(enteredPassword.text)) {
                         return 'The password you have entered is incorrect.';
                       }
                     },
@@ -97,7 +100,10 @@ class _UpdateWalletPageState extends State<UpdateWalletPage> {
                   margin: EdgeInsets.only(top: 15),
                   child: ElevatedButton(
                       onPressed: () {
-                        _formkey.currentState!.validate();
+                        if (_formkey.currentState!.validate()) {
+                          Navigator.pop(context);
+                        }
+
                       },
                       style: elevatedButtonStyle,
                       child: Text(
@@ -135,7 +141,6 @@ class _UpdateWalletPageState extends State<UpdateWalletPage> {
             ),
           ),
         ),
-        bottomNavigationBar: AppBottomNavBar2(),
       ),
     );
   }

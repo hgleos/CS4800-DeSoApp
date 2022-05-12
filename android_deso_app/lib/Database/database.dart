@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:android_deso_app/Database/user.dart';
 
 import 'listing.dart';
@@ -39,7 +41,7 @@ Listing item5 = Listing(5, '720Hz Monitor', user1.username, '1938.435632543',
     'https://mir-s3-cdn-cf.behance.net/project_modules/2800_opt_1/acfd56114240597.60379bba2cff5.jpg',
     'https://mir-s3-cdn-cf.behance.net/project_modules/2800_opt_1/2ea081114240597.60379bba2f85d.jpg',
 ]);
-Listing item6 = Listing(6, 'Yeezy Red Octobers', user3.username, '1000.495888773', status: 2, buyer: user3.username,
+Listing item6 = Listing(6, 'Yeezy Red Octobers', user3.username, '1000.495888773', status: 2, buyer: user2.username,
     images: ['lib/assets/1.jpg',
       'lib/assets/2.jpg',
       'lib/assets/3.jpg',
@@ -84,11 +86,42 @@ List<Listing> cart = [];
   getFeed(){
     List<Listing> homeFeed = [];
     for(var i in feed){
-      if(i.seller != loggedInUser && i.status == 0){
+      if(i.status == 0){
         homeFeed.add(i);
       }
     }
     return homeFeed;
+  }
+
+  passwordsMatch(String password) {
+    for (var i in userList) {
+      if (i.username == loggedInUser) {
+        if (i.password == password) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }
+    return false;
+  }
+
+  updatePassword(String password) {
+    for (var i in userList) {
+      if (i.username == loggedInUser) {
+        i.password = password;
+      }
+    }
+    }
+
+  getListings() {
+    List<Listing> listingFeed = [];
+    for (var i in feed) {
+      if (loggedIn == true && (i.seller == loggedInUser) && i.status < 1) {
+        listingFeed.add(i);
+      }
+    }
+    return listingFeed;
   }
 
   getCurrentContracts(){
@@ -122,14 +155,10 @@ List<Listing> cart = [];
     return feed.length + 1;
   }
 
-  // I assume when a user clicks on their own listing there will be a delete button
-  // if so then we can delete it by using the listingID number
-  deleteListing(num listingID){
-    for(var i in feed){
-      if(i.listingID == listingID){
-        feed.remove(i);
-      }
-    }
+
+
+  deleteListing(Listing item) {
+    feed.remove(item);
   }
 
   // function for logging in
@@ -159,12 +188,23 @@ List<Listing> cart = [];
 
   // will return the list cart containing all Listings in the cart
   getCartFeed(){
+
     return cart;
   }
+
+
 
   // adding an item to the cart feed
   addToCart(Listing item){
     cart.add(item);
+  }
+
+  checkoutCart() {
+    for (var i in cart) {
+      i.status = 1;
+      i.buyer = loggedInUser;
+    }
+    cart = [];
   }
 
   // will remove an item from cart

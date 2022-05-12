@@ -1,3 +1,4 @@
+import 'package:android_deso_app/Database/database.dart';
 import 'package:android_deso_app/Screens/Settings/change_password_page.dart';
 import 'package:android_deso_app/Screens/Settings/update_email_page.dart';
 import 'package:android_deso_app/Screens/Settings/update_wallet_page.dart';
@@ -22,83 +23,101 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  int selectedPage = 0;
 
-  final _pageOptions = [
-    SettingsPage(),
-    ChangePasswordPage(),
-    UpdateEmailPage(),
-    UpdateWalletPage()
-  ];
 
   @override
   Widget build(BuildContext context) {
+    if (loggedIn) {
+      return Scaffold(
+        body: Center(
+          child: Column(
+            children: [
+              Container(
+                margin: EdgeInsets.only(top: 40),
+                child: Text(
+                  'Settings',
+                  style: boldHeading,
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 25),
+                child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const UpdateWalletPage()),
+                      );
+                    },
+                    style: elevatedButtonStyle,
+                    child: Text(
+                      'Update wallet address',
+                    )),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 25),
+                child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const UpdateEmailPage()),
+                      );
+                    },
+                    style: elevatedButtonStyle,
+                    child: Text(
+                      'Change email address',
+                    )),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 25),
+                child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ChangePasswordPage()),
+                      );
+                    },
+                    style: elevatedButtonStyle,
+                    child: Text(
+                      'Change password',
+                    )),
+              ),
+              // sign out button will bring you to the home screen (has all the NFTs)
+              Container(
+                margin: EdgeInsets.only(top: 25),
+                child: ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        logout();
+                      });
+                    },
+                    style: elevatedButtonStyle,
+                    child: Text(
+                      'Sign out',
+                    )),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
     return Scaffold(
       body: Center(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              margin: EdgeInsets.only(top: 40),
-              child: Text(
-                'Settings',
-                style: boldHeading,
+              alignment: Alignment.center,
+              child: Text("Please sign in to view your settings",
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold
+                ),
               ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 25),
-              child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const UpdateWalletPage()),
-                    );
-                  },
-                  style: elevatedButtonStyle,
-                  child: Text(
-                    'Update wallet address',
-                  )),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 25),
-              child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const UpdateEmailPage()),
-                    );
-                  },
-                  style: elevatedButtonStyle,
-                  child: Text(
-                    'Change email address',
-                  )),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 25),
-              child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ChangePasswordPage()),
-                    );
-                  },
-                  style: elevatedButtonStyle,
-                  child: Text(
-                    'Change password',
-                  )),
-            ),
-            // sign out button will bring you to the home screen (has all the NFTs)
-            Container(
-              margin: EdgeInsets.only(top: 25),
-              child: ElevatedButton(
-                  onPressed: () {},
-                  style: elevatedButtonStyle,
-                  child: Text(
-                    'Sign out',
-                  )),
-            ),
+            )
           ],
         ),
       ),

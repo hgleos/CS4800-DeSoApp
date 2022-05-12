@@ -1,6 +1,11 @@
+import 'dart:async';
+import 'dart:developer';
+
+import 'package:android_deso_app/Database/database.dart';
 import 'package:android_deso_app/Screens/Components/nft_listing.dart';
 import 'package:android_deso_app/Screens/Contracts/single_contract_listing_page.dart';
 import 'package:android_deso_app/Screens/Elements/app_bar.dart';
+import 'package:android_deso_app/Screens/ShoppingCart/payment_sent.dart';
 import 'package:android_deso_app/Screens/ShoppingCart/sample_nft_data.dart';
 import 'package:android_deso_app/Screens/ShoppingCart/your_wallet_address.dart';
 import 'package:android_deso_app/constants.dart';
@@ -15,9 +20,21 @@ class PaymentPage extends StatefulWidget {
 
 class _PaymentPageState extends State<PaymentPage> {
   @override
+  void initState() {
+    // TODO: implement initState
+    Timer(Duration(seconds: 3), () {
+      log("before");
+      checkoutCart();
+      log("after");
+
+      Navigator.push(context, MaterialPageRoute(builder: (context) => const PaymentSentPage()));
+    });
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: desoAppBar(context, true),
+        appBar: desoAppBar(context, loggedIn),
         body: Container(
           margin: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
             child: SingleChildScrollView(

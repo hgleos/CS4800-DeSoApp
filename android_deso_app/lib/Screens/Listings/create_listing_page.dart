@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:android_deso_app/Database/database.dart';
@@ -47,9 +48,10 @@ class _CreateListingPageState extends State<CreateListingPage> {
                     margin: EdgeInsets.only(top: 20),
                     child: ElevatedButton(
                         onPressed: () {
-                          if(_formkey.currentState!.validate()){
+                          if(_formkey.currentState!.validate() && _imageFileList!.length != 0){
                             // creating a Listing and adding it to the "database" by using createListing()
                             createListing(Listing(generateListingID(), title.text, loggedInUser, price.text));
+                            Navigator.pop(context);
                           };
 
                         },
@@ -113,12 +115,15 @@ class _CreateListingPageState extends State<CreateListingPage> {
                     ),
                   ),
                   Container(
+
                     margin: EdgeInsets.only(top: 15, bottom: 10),
                     child: ElevatedButton(
+
                         onPressed: () {
                           selectImages();
 
                         },
+
                         style: elevatedButtonStyle,
                         child: Text(
                           'Upload your images',
