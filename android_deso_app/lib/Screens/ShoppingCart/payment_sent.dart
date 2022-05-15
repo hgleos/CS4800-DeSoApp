@@ -58,19 +58,19 @@ class _PaymentSentPageState extends State<PaymentSentPage> {
         ),
 
         // Checkout items button
-        bottomNavigationBar: Container(
-            child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SingleContractListingPage(temp: SampleNFTData.nfts[0])));
-                },
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(Color(0xff178de8)),
-                    fixedSize: MaterialStateProperty.all<Size>(Size(270, 55)),
-                    textStyle: MaterialStateProperty.all<TextStyle>(TextStyle(fontSize: 20, color: Colors.white))
-                ),
-                child: Text('View contract')
-            )
-        )
+        // bottomNavigationBar: Container(
+        //     child: ElevatedButton(
+        //         onPressed: () {
+        //           Navigator.push(context, MaterialPageRoute(builder: (context) => SingleContractListingPage(temp: SampleNFTData.nfts[0])));
+        //         },
+        //         style: ButtonStyle(
+        //             backgroundColor: MaterialStateProperty.all<Color>(Color(0xff178de8)),
+        //             fixedSize: MaterialStateProperty.all<Size>(Size(270, 55)),
+        //             textStyle: MaterialStateProperty.all<TextStyle>(TextStyle(fontSize: 20, color: Colors.white))
+        //         ),
+        //         child: Text('View contract')
+        //     )
+        // )
     );
   }
 }
